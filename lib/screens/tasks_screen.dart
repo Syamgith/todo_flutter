@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:todoflutter/models/task.dart';
 import 'package:todoflutter/widgets/bottom_screen.dart';
 import 'package:todoflutter/widgets/tasks_list.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(name: 'Do workout'),
+    Task(name: 'Study 2 hr'),
+    Task(name: 'Sleep more')
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +30,12 @@ class TasksScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: BottomScreen(),
+                child: BottomScreen((newTitle) {
+                  setState(() {
+                    tasks.add(Task(name: newTitle));
+                  });
+                  Navigator.pop(context);
+                }),
               ),
             ),
           );
@@ -52,7 +69,7 @@ class TasksScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  ' 10 tasks',
+                  ' ${tasks.length} tasks',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],
@@ -67,7 +84,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: TasksList(),
+              child: TasksList(tasks: tasks),
             ),
           )
         ],
