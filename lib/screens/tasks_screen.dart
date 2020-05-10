@@ -5,6 +5,10 @@ class TasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xfff052019),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xfff052019),
+        child: Icon(Icons.add),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
