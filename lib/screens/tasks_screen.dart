@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoflutter/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -58,25 +59,6 @@ class TasksScreen extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class TasksList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[TasksTile(), TasksTile()],
-    );
-  }
-}
-
-class TasksTile extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('Task 1'),
-      trailing: Checkbox(value: false, onChanged: null),
     );
   }
 }
