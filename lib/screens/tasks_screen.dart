@@ -4,9 +4,9 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff052019),
+      backgroundColor: Color(0xFF1D1E33),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xfff052019),
+        backgroundColor: Color(0xFF1D1E33),
         child: Icon(Icons.add),
       ),
       body: Column(
@@ -21,7 +21,7 @@ class TasksScreen extends StatelessWidget {
                   child: Icon(
                     Icons.list,
                     size: 40,
-                    color: Color(0xfff052019),
+                    color: Color(0xFF1D1E33),
                   ),
                   backgroundColor: Colors.white,
                   radius: 40,
@@ -53,10 +53,30 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
+              child: TasksList(),
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class TasksList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[TasksTile(), TasksTile()],
+    );
+  }
+}
+
+class TasksTile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text('Task 1'),
+      trailing: Checkbox(value: false, onChanged: null),
     );
   }
 }
