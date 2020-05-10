@@ -15,15 +15,28 @@ class BottomScreen extends StatelessWidget {
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
               'Enter the Task',
-              style: TextStyle(color: Color(0xFF1D1E33), fontSize: 30),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color(0xFF1D1E33),
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
             ),
-            TextField(),
+            TextField(
+              autofocus: true,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
             FlatButton(
               onPressed: () {},
-              child: Text('Add'),
+              color: Color(0xFF1D1E33),
+              child: Text(
+                'ADD',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
             )
           ],
         ),
