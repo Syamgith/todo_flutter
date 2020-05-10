@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoflutter/widgets/bottom_screen.dart';
 import 'package:todoflutter/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -11,25 +12,25 @@ class TasksScreen extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => Container());
+              context: context, builder: (context) => BottomScreen());
         },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
+            padding: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 CircleAvatar(
                   child: Icon(
                     Icons.list,
-                    size: 40,
+                    size: 35,
                     color: Color(0xFF1D1E33),
                   ),
                   backgroundColor: Colors.white,
-                  radius: 40,
+                  radius: 35,
                 ),
                 SizedBox(
                   height: 12,
@@ -38,7 +39,7 @@ class TasksScreen extends StatelessWidget {
                   'To Do',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 50,
+                      fontSize: 45,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
@@ -50,7 +51,6 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              height: 300,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
