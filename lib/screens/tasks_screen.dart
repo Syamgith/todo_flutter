@@ -8,16 +8,31 @@ class TasksScreen extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             CircleAvatar(
-              child: Icon(Icons.list),
-              backgroundColor: Colors.green,
-              foregroundColor: Colors.white,
+              child: Icon(
+                Icons.list,
+                size: 40,
+                color: Color(0xfff052019),
+              ),
+              backgroundColor: Colors.white,
+              radius: 40,
+            ),
+            SizedBox(
+              height: 12,
             ),
             Text(
               'To Do',
-              style: TextStyle(color: Colors.white),
-            )
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              ' 10 tasks',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
           ],
         ),
       ),
