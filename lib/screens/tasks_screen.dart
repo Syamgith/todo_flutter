@@ -9,6 +9,10 @@ class TasksScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF1D1E33),
         child: Icon(Icons.add),
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => Container());
+        },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
