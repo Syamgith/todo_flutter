@@ -9,11 +9,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: 'Do workout'),
-    Task(name: 'Study 2 hr'),
-    Task(name: 'Sleep more')
-  ];
+
 
   @override
   Widget build(BuildContext context) {
