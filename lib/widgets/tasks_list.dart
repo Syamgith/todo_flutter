@@ -11,15 +11,21 @@ class TasksList extends StatelessWidget {
   Widget build(BuildContext context) {
     UnmodifiableListView<Task> tasks = Provider.of<TaskData>(context).tasks;
     return ListView.builder(
-        itemCount: tasks.length,
-        itemBuilder: (context, index) {
-          return TasksTile(
-              title: tasks[index].name,
-              isChecked: tasks[index].isDone,
-              cbCallBack: (checkBoxState) {
-                Provider.of<TaskData>(context, listen: false)
-                    .updateTask(tasks[index]);
-              });
-        });
+      itemCount: tasks.length,
+      itemBuilder: (context, index) {
+        return TasksTile(
+          title: tasks[index].name,
+          isChecked: tasks[index].isDone,
+          cbCallBack: (checkBoxState) {
+            Provider.of<TaskData>(context, listen: false)
+                .updateTask(tasks[index]);
+          },
+          onLongPressCallBack: () {
+            Provider.of<TaskData>(context, listen: false)
+                .deleteTask(tasks[index]);
+          },
+        );
+      },
+    );
   }
 }
