@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoflutter/models/task_data.dart';
 
 class BottomScreen extends StatelessWidget {
-  BottomScreen(this.addTaskCallBack);
-  final Function addTaskCallBack;
   @override
   Widget build(BuildContext context) {
-    String newTitle;
+    String newTaskTitle;
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -32,13 +32,15 @@ class BottomScreen extends StatelessWidget {
               autofocus: true,
               textAlign: TextAlign.center,
               onChanged: (newTxt) {
-                newTitle = newTxt;
+                newTaskTitle = newTxt;
               },
             ),
             SizedBox(height: 20),
             FlatButton(
               onPressed: () {
-                addTaskCallBack(newTitle);
+                Provider.of<TaskData>(context, listen: false)
+                    .addTask(newTaskTitle);
+                Navigator.pop(context);
               },
               color: Color(0xFF1D1E33),
               child: Text(

@@ -20,12 +20,7 @@ class TasksScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: BottomScreen((newTitle) {
-//                  setState(() {
-//                    tasks.add(Task(name: newTitle));
-//                  });
-                  Navigator.pop(context);
-                }),
+                child: BottomScreen(),
               ),
             ),
           );
