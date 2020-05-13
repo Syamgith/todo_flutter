@@ -12,6 +12,14 @@ class TaskData extends ChangeNotifier {
   DatabaseHelper databaseHelper;
   List<Task> tasksList = [];
 
+  int noOfTasks() {
+    if (tasksList != null) {
+      return tasksList.length;
+    } else
+      return 0;
+    notifyListeners();
+  }
+
   Future<List<Task>> getTasks() async {
     tasksList = await databaseHelper.getAllTask();
     notifyListeners();
