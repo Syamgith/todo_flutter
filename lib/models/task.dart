@@ -20,9 +20,9 @@ class Task {
     return map;
   }
 
-  void fromMap(Map<String, dynamic> map) {
-    id = map[columnId];
-    name = map[columnTitle];
-    isDone = map[columnDone] == 1;
+  Task.fromMap(Map<String, dynamic> map) {
+    this.id = map[columnId];
+    this.name = map[columnTitle];
+    this.isDone = map[columnDone] == 1;
   }
 }

@@ -6,12 +6,11 @@ import 'task.dart';
 
 class TaskData extends ChangeNotifier {
   final DatabaseHelper databaseHelper = DatabaseHelper();
+  List<Task> taskslist;
 
-  List<Task> get tasks  {
-
-    return databaseHelper.getAllTask();
+  Stream<List<Task>> get tasks {
+    return databaseHelper.getAllTask().asStream();
   }
-
 
   void addTask(String newTaskTitle) {
     Task newTask = Task(name: newTaskTitle);

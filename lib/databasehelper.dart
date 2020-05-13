@@ -17,11 +17,13 @@ class DatabaseHelper {
   }
 
   Future<void> initDatabase() async {
-    db = await openDatabase(join(await getDatabasesPath(), "my_db.db"),
-        onCreate: (db, version) {
-      return db.execute(
-          "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnDone INTEGER)");
-    }, version: 1);
+    if (db == null) {
+      db = await openDatabase(join(await getDatabasesPath(), "my_db.db"),
+          onCreate: (db, version) {
+        return db.execute(
+            "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTO INCREMENT, $columnTitle TEXT, $columnDone INTEGER)");
+      }, version: 1);
+    }
   }
 
   Future<void> insertTask(Task task) async {
@@ -34,13 +36,15 @@ class DatabaseHelper {
   }
 
   Future<List<Task>> getAllTask() async {
-    final List<Map<String, dynamic>> tasks = await db.query(tableName);
-    return List.generate(
-        tasks.length,
-        (i) => Task(
-            name: tasks[i][columnTitle],
-            isDone: tasks[i][columnDone] == 1,
-            id: tasks[i][columnId]));
+    if (db != null) {
+      final List<Map<String, dynamic>> tasks = await db.query(tableName);
+      return List.generate(
+          tasks.length,
+          (i) => Task(
+              name: tasks[i][columnTitle],
+              isDone: tasks[i][columnDone] == 1,
+              id: tasks[i][columnId]));
+    }
   }
 
   //

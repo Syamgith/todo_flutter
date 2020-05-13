@@ -7,23 +7,34 @@ import 'package:todoflutter/widgets/task_tile.dart';
 class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Task> tasks = Provider.of<TaskData>(context).tasks;
-    return ListView.builder(
-      itemCount: tasks.length,
-      itemBuilder: (context, index) {
-        return TasksTile(
-          title: tasks[index].name,
-          isChecked: tasks[index].isDone,
-          cbCallBack: (checkBoxState) {
-            Provider.of<TaskData>(context, listen: false)
-                .updateTask(tasks[index]);
-          },
+    Stream<List<Task>> tasksInFuture = Provider.of<TaskData>(context).tasks;
+    return StreamBuilder(
+        stream: tasksInFuture,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<Task> newTaskslist = snapshot.data;
+            return ListView.builder(
+              itemCount: newTaskslist.length,
+              itemBuilder: (context, index) {
+                return TasksTile(
+                  title: newTaskslist[index].name != null
+                      ? newTaskslist[index].name
+                      : '',
+                  isChecked: newTaskslist[index].isDone,
+                  cbCallBack: (checkBoxState) {
+                    Provider.of<TaskData>(context, listen: false)
+                        .updateTask(newTaskslist[index]);
+                  },
 //          onLongPressCallBack: () {
 //            Provider.of<TaskData>(context, listen: false)
 //                .deleteTask(tasks[index]);
 //          },
-        );
-      },
-    );
+                );
+              },
+            );
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
   }
 }

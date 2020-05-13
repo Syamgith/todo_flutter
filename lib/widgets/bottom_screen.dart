@@ -38,8 +38,10 @@ class BottomScreen extends StatelessWidget {
             SizedBox(height: 20),
             FlatButton(
               onPressed: () {
-                Provider.of<TaskData>(context, listen: false)
-                    .addTask(newTaskTitle);
+                if (newTaskTitle != null) {
+                  Provider.of<TaskData>(context, listen: false)
+                      .addTask(newTaskTitle);
+                }
                 Navigator.pop(context);
               },
               color: Color(0xFF1D1E33),
