@@ -44,6 +44,10 @@ class DatabaseHelper {
     }
   }
 
+  Future<int> deleteTaskFromDB(int id) async {
+    return await db.delete(tableName, where: '$columnId = ?', whereArgs: [id]);
+  }
+
   Future<List<Task>> getAllTask() async {
     if (db != null) {
       final List<Map<String, dynamic>> tasks = await db.query(tableName);

@@ -25,10 +25,10 @@ class TasksList extends StatelessWidget {
                     Provider.of<TaskData>(context, listen: false)
                         .updateTaskCheck(newTaskslist[index]);
                   },
-//          onLongPressCallBack: () {
-//            Provider.of<TaskData>(context, listen: false)
-//                .deleteTask(tasks[index]);
-//          },
+                  onLongPressCallBack: () {
+                    Provider.of<TaskData>(context, listen: false)
+                        .deleteTask(newTaskslist[index]);
+                  },
                 );
               },
             );

@@ -30,8 +30,8 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-//  void deleteTask(Task task) {
-//    _tasks.remove(task);
-//    notifyListeners();
-//  }
+  void deleteTask(Task task) {
+    databaseHelper.deleteTaskFromDB(task.id);
+    notifyListeners();
+  }
 }
