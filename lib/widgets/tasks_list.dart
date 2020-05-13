@@ -7,9 +7,6 @@ import 'package:todoflutter/widgets/task_tile.dart';
 class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-//    Future<List<Task>> tasksInFuture =
-//        Provider.of<TaskData>(context).getTasks();
-
     return FutureBuilder<List<Task>>(
         future: Provider.of<TaskData>(context).getTasks(),
         initialData: TaskData().tasksList,
@@ -26,7 +23,7 @@ class TasksList extends StatelessWidget {
                   isChecked: newTaskslist[index].isDone,
                   cbCallBack: (checkBoxState) {
                     Provider.of<TaskData>(context, listen: false)
-                        .updateTask(newTaskslist[index]);
+                        .updateTaskCheck(newTaskslist[index]);
                   },
 //          onLongPressCallBack: () {
 //            Provider.of<TaskData>(context, listen: false)

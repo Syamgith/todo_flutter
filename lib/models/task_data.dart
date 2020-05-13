@@ -18,18 +18,15 @@ class TaskData extends ChangeNotifier {
     return tasksList;
   }
 
-  void notify() {
-    notifyListeners();
-  }
-
   void addTask(String newTaskTitle) {
     Task newTask = Task(name: newTaskTitle);
     databaseHelper.insertTask(newTask);
     notifyListeners();
   }
 
-  void updateTask(Task task) {
+  void updateTaskCheck(Task task) {
     task.toggleDone();
+    databaseHelper.updateTask(task);
     notifyListeners();
   }
 

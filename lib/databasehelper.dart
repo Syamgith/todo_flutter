@@ -35,6 +35,15 @@ class DatabaseHelper {
     }
   }
 
+  Future<void> updateTask(Task task) {
+    try {
+      db.update(tableName, task.toMap(),
+          where: '$columnId = ?', whereArgs: [task.id]);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future<List<Task>> getAllTask() async {
     if (db != null) {
       final List<Map<String, dynamic>> tasks = await db.query(tableName);
