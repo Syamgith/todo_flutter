@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:todoflutter/databasehelper.dart';
 
@@ -5,11 +6,12 @@ import 'task.dart';
 
 class TaskData extends ChangeNotifier {
   final DatabaseHelper databaseHelper = DatabaseHelper();
-  //List<Task> _tasks =  databaseHelper.getAllTask() as List<Task>;
 
-  List<Task> get tasks {
-    return databaseHelper.getAllTask() as List<Task>;
+  List<Task> get tasks  {
+
+    return databaseHelper.getAllTask();
   }
+
 
   void addTask(String newTaskTitle) {
     Task newTask = Task(name: newTaskTitle);

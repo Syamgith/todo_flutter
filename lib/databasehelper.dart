@@ -20,7 +20,7 @@ class DatabaseHelper {
     db = await openDatabase(join(await getDatabasesPath(), "my_db.db"),
         onCreate: (db, version) {
       return db.execute(
-          "CREATE TABLE $tableName($columnId AUTO INCREMENT PRIMARY KEY, $columnTitle TEXT, $columnDone INTEGER)");
+          "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnDone INTEGER)");
     }, version: 1);
   }
 
