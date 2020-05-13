@@ -7,9 +7,12 @@ import 'package:todoflutter/widgets/task_tile.dart';
 class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Stream<List<Task>> tasksInFuture = Provider.of<TaskData>(context).tasks;
-    return StreamBuilder(
-        stream: tasksInFuture,
+//    Future<List<Task>> tasksInFuture =
+//        Provider.of<TaskData>(context).getTasks();
+
+    return FutureBuilder<List<Task>>(
+        future: Provider.of<TaskData>(context).getTasks(),
+        initialData: TaskData().tasksList,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Task> newTaskslist = snapshot.data;
@@ -33,7 +36,7 @@ class TasksList extends StatelessWidget {
               },
             );
           } else {
-            return CircularProgressIndicator();
+            return ListView();
           }
         });
   }

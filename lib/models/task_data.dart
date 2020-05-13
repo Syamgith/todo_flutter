@@ -5,11 +5,21 @@ import 'package:todoflutter/databasehelper.dart';
 import 'task.dart';
 
 class TaskData extends ChangeNotifier {
-  final DatabaseHelper databaseHelper = DatabaseHelper();
-  List<Task> taskslist;
+  TaskData() {
+    databaseHelper = DatabaseHelper();
+    notifyListeners();
+  }
+  DatabaseHelper databaseHelper;
+  List<Task> tasksList = [];
 
-  Stream<List<Task>> get tasks {
-    return databaseHelper.getAllTask().asStream();
+  Future<List<Task>> getTasks() async {
+    tasksList = await databaseHelper.getAllTask();
+    notifyListeners();
+    return tasksList;
+  }
+
+  void notify() {
+    notifyListeners();
   }
 
   void addTask(String newTaskTitle) {

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:todoflutter/models/task_data.dart';
 import 'package:todoflutter/widgets/bottom_screen.dart';
 import 'package:todoflutter/widgets/tasks_list.dart';
 
@@ -54,7 +52,7 @@ class TasksScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  ' ${Provider.of<TaskData>(context).tasks.length} tasks',
+                  '  tasks',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],
