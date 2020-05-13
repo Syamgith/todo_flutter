@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoflutter/models/task.dart';
@@ -9,7 +7,7 @@ import 'package:todoflutter/widgets/task_tile.dart';
 class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    UnmodifiableListView<Task> tasks = Provider.of<TaskData>(context).tasks;
+    List<Task> tasks = Provider.of<TaskData>(context).tasks;
     return ListView.builder(
       itemCount: tasks.length,
       itemBuilder: (context, index) {
@@ -20,10 +18,10 @@ class TasksList extends StatelessWidget {
             Provider.of<TaskData>(context, listen: false)
                 .updateTask(tasks[index]);
           },
-          onLongPressCallBack: () {
-            Provider.of<TaskData>(context, listen: false)
-                .deleteTask(tasks[index]);
-          },
+//          onLongPressCallBack: () {
+//            Provider.of<TaskData>(context, listen: false)
+//                .deleteTask(tasks[index]);
+//          },
         );
       },
     );

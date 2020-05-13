@@ -1,23 +1,19 @@
-import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
+import 'package:todoflutter/databasehelper.dart';
 
 import 'task.dart';
 
 class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
-    Task(name: 'Do workout'),
-    Task(name: 'Study 2 hr'),
-    Task(name: 'Sleep more')
-  ];
+  final DatabaseHelper databaseHelper = DatabaseHelper();
+  //List<Task> _tasks =  databaseHelper.getAllTask() as List<Task>;
 
-  UnmodifiableListView<Task> get tasks {
-    return UnmodifiableListView<Task>(_tasks);
+  List<Task> get tasks {
+    return databaseHelper.getAllTask() as List<Task>;
   }
 
   void addTask(String newTaskTitle) {
     Task newTask = Task(name: newTaskTitle);
-    _tasks.add(newTask);
+    databaseHelper.insertTask(newTask);
     notifyListeners();
   }
 
@@ -26,8 +22,8 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteTask(Task task) {
-    _tasks.remove(task);
-    notifyListeners();
-  }
+//  void deleteTask(Task task) {
+//    _tasks.remove(task);
+//    notifyListeners();
+//  }
 }
