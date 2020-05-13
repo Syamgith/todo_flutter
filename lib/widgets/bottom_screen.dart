@@ -7,7 +7,7 @@ class BottomScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String newTaskTitle;
     return Container(
-      color: Color(0xff757575),
+      color: Color(0xFF1D1E33),
       child: Container(
         padding: EdgeInsets.all(22),
         decoration: BoxDecoration(
